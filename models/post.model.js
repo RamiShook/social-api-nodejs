@@ -20,6 +20,11 @@ const postSchema = new Schema(
       count: { type: Number, default: 0 },
       likers: { type: [Schema.Types.ObjectId] },
     },
+    deleted: {
+      type: Boolean,
+      default: false,
+      select: false,
+    },
   },
   { timestamps: true }
 );
