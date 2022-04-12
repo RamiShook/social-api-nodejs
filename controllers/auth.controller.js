@@ -46,3 +46,13 @@ export async function login(req, res) {
     return res.status(500).json({ message: "Something went wrong" + error });
   }
 }
+
+export async function findById(req, res) {
+  try {
+    const { UserId } = req.params;
+    const result = await User.findById(UserId);
+    return res.status(200).json(result);
+  } catch (error) {
+    console.log(error);
+  }
+}

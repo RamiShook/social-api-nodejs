@@ -6,4 +6,6 @@ const router = express.Router();
 
 router.post("/post", isLoggedIn, createPostRequest, postController.createPost);
 
+router.get("/posts", postController.findAll);
+
 export default router;

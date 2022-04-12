@@ -12,11 +12,9 @@ const postSchema = new Schema(
       required: true,
     },
     author: {
-      id: {
-        type: Schema.Types.ObjectId,
-        required: true,
-        ref: "User",
-      },
+      type: Schema.Types.ObjectId,
+      required: true,
+      ref: "User",
     },
     likes: {
       count: { type: Number, default: 0 },
