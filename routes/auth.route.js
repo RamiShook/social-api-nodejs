@@ -9,4 +9,6 @@ router.post("/signup", signupRequestValidation, authController.signup);
 
 router.post("/login", loginRequestValidation, authController.login);
 
+router.get("/user/:UserId", authController.findById);
+
 export default router;
