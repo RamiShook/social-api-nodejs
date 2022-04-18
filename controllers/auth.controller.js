@@ -1,13 +1,13 @@
-import User from "../models/user.model.js";
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import User from '../models/user.model.js';
 
 export async function signup(req, res) {
   const { firstName, lastName, email, password } = req.body;
   try {
     const user = await User.findOne({ email });
     if (user) {
-      return res.status(400).json({ mesasge: "Email already exist" });
+      return res.status(400).json({ mesasge: 'Email already exist' });
     }
 
     const hashedPass = await bcrypt.hash(password, 10);
@@ -18,10 +18,9 @@ export async function signup(req, res) {
       fullName: `${firstName} ${lastName}`,
     });
 
-    return res.status(201).json({ message: "success user created!" });
+    return res.status(201).json({ message: 'success user created!' });
   } catch (err) {
-    console.log(err);
-    return res.status(500).json({ message: "Something went wrong" });
+    return res.status(500).json({ message: 'Something went wrong' });
   }
 }
 
@@ -29,21 +28,22 @@ export async function login(req, res) {
   try {
     const { email, password } = req.body;
 
-    const user = await User.findOne({ email }).select("+password");
+    const user = await User.findOne({ email }).select('+password');
 
     if (!user || !bcrypt.compare(password, user.password)) {
-      return res.status(401).json({ message: "wrong email or password" });
+      return res.status(401).json({ message: 'wrong email or password' });
     }
     const username = user.fullName;
+    // eslint-disable-next-line no-underscore-dangle
     const userId = user._id.toString();
     return res.status(200).json({
-      message: "Signed in succssfully",
+      message: 'Signed in succssfully',
       token: jwt.sign({ username, userId }, process.env.JWT_SECRET_KEY, {
-        expiresIn: "1h",
+        expiresIn: '1h',
       }),
     });
   } catch (error) {
-    return res.status(500).json({ message: "Something went wrong" + error });
+    return res.status(500).json({ message: `Something went wrong ${error}` });
   }
 }
 
@@ -53,6 +53,6 @@ export async function findById(req, res) {
     const result = await User.findById(UserId);
     return res.status(200).json(result);
   } catch (error) {
-    console.log(error);
+    return res.status(500).json({ message: `Something went wrong ${error}` });
   }
 }

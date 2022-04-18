@@ -1,14 +1,14 @@
-import express from "express";
-import bodyParser from "body-parser";
-import mongoose from "mongoose";
-import "dotenv/config.js";
-import authRoutes from "./routes/auth.route.js";
-import postRoutes from "./routes/post.route.js";
-import cors from "cors";
+import express from 'express';
+import bodyParser from 'body-parser';
+import mongoose from 'mongoose';
+import 'dotenv/config.js';
+import cors from 'cors';
+import authRoutes from './routes/auth.route.js';
+import postRoutes from './routes/post.route.js';
 
-var corsOptions = {
-  origin: "*",
-  methods: "GET, POST, DELETE, PUT",
+const corsOptions = {
+  origin: '*',
+  methods: 'GET, POST, DELETE, PUT',
 };
 const app = express();
 app.use(cors(corsOptions));

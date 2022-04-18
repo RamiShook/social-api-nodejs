@@ -1,4 +1,4 @@
-import loginSchema from "../../validationSchemas/login.schema.js";
+import loginSchema from '../../validationSchemas/login.schema.js';
 
 export default async (req, res, next) => {
   try {

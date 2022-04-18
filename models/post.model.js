@@ -1,4 +1,5 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
+
 const { Schema } = mongoose;
 
 const postSchema = new Schema(
@@ -14,7 +15,7 @@ const postSchema = new Schema(
     author: {
       type: Schema.Types.ObjectId,
       required: true,
-      ref: "User",
+      ref: 'User',
     },
     likes: {
       count: { type: Number, default: 0 },
@@ -26,7 +27,7 @@ const postSchema = new Schema(
       select: false,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
-export default mongoose.model("Posts", postSchema);
+export default mongoose.model('Posts', postSchema);

@@ -1,4 +1,4 @@
-import signupSchema from "../../validationSchemas/signup.schema.js";
+import signupSchema from '../../validationSchemas/signup.schema.js';
 
 export default async (req, res, next) => {
   try {

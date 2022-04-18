@@ -1,4 +1,4 @@
-import createPostSchema from "../../validationSchemas/createPost.schema.js";
+import createPostSchema from '../../validationSchemas/createPost.schema.js';
 
 export default async (req, res, next) => {
   try {
